@@ -402,24 +402,14 @@
               <FilePath>..\peripherals\include\ece210_api.h</FilePath>
             </File>
             <File>
-              <FileName>Invader.black.c</FileName>
+              <FileName>Logo.black.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Invader.black.c</FilePath>
+              <FilePath>.\Logo.black.c</FilePath>
             </File>
             <File>
-              <FileName>Invader.black.h</FileName>
+              <FileName>Logo.black.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Invader.black.h</FilePath>
-            </File>
-            <File>
-              <FileName>BuckyBadger2.black.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\BuckyBadger2.black.c</FilePath>
-            </File>
-            <File>
-              <FileName>BuckyBadger2.black.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\BuckyBadger2.black.h</FilePath>
+              <FilePath>.\Logo.black.h</FilePath>
             </File>
           </Files>
         </Group>

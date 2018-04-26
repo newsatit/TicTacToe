@@ -4,13 +4,13 @@
 //**********GLOBAL VARIABLE**************************
 #include "lab_buttons.h"
 #include "ece210_api.h"
-#include "Invader.black.h"
+#include "Logo.black.h"
 
 #define LCD_SIZE_X 240              //X size of LCD screen in pixels
 #define LCD_SIZE_Y 320              //Y size of LCD screen in pixels
 
-#define	LCD_INIT_X			LCD_HALF_SIZE_X - INVADER_WIDTH_PXL/2		// Start image in the center of the screen X
-#define	LCD_INIT_Y			LCD_HALF_SIZE_Y - INVADER_HEIGHT_PXL/2	// Start image in the center of the screen Y
+#define	LCD_INIT_X			LCD_HALF_SIZE_X - BUCKY_WIDTH_PXL/2		// Start image in the center of the screen X
+#define	LCD_INIT_Y			LCD_HALF_SIZE_Y - BUCKY_HEIGHT_PXL/2	// Start image in the center of the screen Y
 #define LCD_MAX_DRAW_X	LCD_SIZE_X-1	// 0 to LCD_MAX_DRAW_X is = LCD_SIZE_X
 #define LCD_MAX_DRAW_Y	LCD_SIZE_Y-1	// 0 to LCD_MAX_DRAW_Y is = LCD_SIZE_Y
 #define LCD_HALF_SIZE_X	LCD_SIZE_X/2	// X center of screen in pixels
@@ -45,7 +45,7 @@ void start()
     ece210_lcd_add_msg("Jason Zhou; Dawanit Satitsumpun; Avinash Narisetty", TERMINAL_ALIGN_CENTER, LCD_COLOR_YELLOW);
     
     
-      ece210_lcd_draw_image(LCD_INIT_X,INVADER_WIDTH_PXL,LCD_INIT_Y-50 ,INVADER_HEIGHT_PXL, invader_bitmap,LCD_COLOR_RED, LCD_COLOR_BLACK);    //display the logo of the TIC-TAC-TOE
+      ece210_lcd_draw_image(LCD_INIT_X,BUCKY_WIDTH_PXL,LCD_INIT_Y-50 ,BUCKY_HEIGHT_PXL, Logo_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);    //display the logo of the TIC-TAC-TOE
     
     //initialize wireless connection
     ece210_wireless_init(LOCAL_ID, REMOTE_ID);
