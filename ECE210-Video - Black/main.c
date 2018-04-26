@@ -20,8 +20,8 @@
 #define LCD_HALF_SIZE_Y	LCD_SIZE_Y/2	// Y center of screen in pixels
 
 
-#define LOCAL_ID 0x01
-#define REMOTE_ID 0x00
+#define LOCAL_ID 0x00
+#define REMOTE_ID 0x01
 uint32_t character;              //if character==0, then I'm "X"
                                  //if character==1, then I'm "O"
 //**********FUNCTION DECLARATION*********************
