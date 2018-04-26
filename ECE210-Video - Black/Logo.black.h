@@ -4,7 +4,7 @@
 
 #include "ece210_api.h"
 
-extern const uint8_t bucky_bitmap[];
+extern const uint8_t Logo_bitmap[];
 #define BUCKY_WIDTH_PXL 175
 #define BUCKY_HEIGHT_PXL 50
 
