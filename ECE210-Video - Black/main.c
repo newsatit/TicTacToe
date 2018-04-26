@@ -5,6 +5,8 @@
 #include "lab_buttons.h"
 #include "ece210_api.h"
 #include "Logo.black.h"
+#include "x_IMAGE_BITMAP.h"
+#include "O_IMAGE.h"
 
 #define LCD_SIZE_X 240              //X size of LCD screen in pixels
 #define LCD_SIZE_Y 320              //Y size of LCD screen in pixels
@@ -74,7 +76,7 @@ void start()
 void select()
 {
     //********************LOCAL VARIABLE*******************
-    uint8_t info[2]={PIC_X,PIC_O};
+    uint8_t info[2]={PIC_X,PIC_Y};
     unit32_t curIndex=0;
     unint32_t otherPlayer;
     unint8_t direction;

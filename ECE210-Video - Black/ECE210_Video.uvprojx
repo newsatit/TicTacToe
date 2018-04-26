@@ -411,6 +411,26 @@
               <FileType>5</FileType>
               <FilePath>.\Logo.black.h</FilePath>
             </File>
+            <File>
+              <FileName>O_IMAGE.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\O_IMAGE.c</FilePath>
+            </File>
+            <File>
+              <FileName>O_IMAGE.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\O_IMAGE.h</FilePath>
+            </File>
+            <File>
+              <FileName>x_IMAGE_BITMAP.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\x_IMAGE_BITMAP.c</FilePath>
+            </File>
+            <File>
+              <FileName>x_IMAGE_BITMAP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\x_IMAGE_BITMAP.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
