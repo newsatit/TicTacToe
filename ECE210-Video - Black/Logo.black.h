@@ -5,7 +5,7 @@
 #include "ece210_api.h"
 
 extern const uint8_t Logo_bitmap[];
-#define BUCKY_WIDTH_PXL 175
-#define BUCKY_HEIGHT_PXL 50
+#define Logo_WIDTH_PXL 175
+#define Logo_HEIGHT_PXL 50
 
 #endif

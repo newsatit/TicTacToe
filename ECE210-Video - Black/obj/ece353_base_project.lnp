@@ -1,8 +1,9 @@
 --cpu=Cortex-M4.fp
 ".\obj\main.o"
 ".\obj\lab_buttons.o"
-".\obj\invader.black.o"
-".\obj\buckybadger2.black.o"
+".\obj\logo.black.o"
+".\obj\o_image.o"
+".\obj\x_image_bitmap.o"
 "..\ece210_api\ece210.lib"
 ".\obj\startup_tm4c123.o"
 ".\obj\system_tm4c123.o"

@@ -13,4 +13,7 @@
 .\obj\main.o: E:\Program Files\keil\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h
 .\obj\main.o: E:\Program Files\keil\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\mpu_armv7.h
 .\obj\main.o: E:\Program Files\keil\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\system_TM4C123.h
-.\obj\main.o: Invader.black.h
+.\obj\main.o: Logo.black.h
+.\obj\main.o: E:\Program Files\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\obj\main.o: x_IMAGE_BITMAP.h
+.\obj\main.o: O_IMAGE.h
