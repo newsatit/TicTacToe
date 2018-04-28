@@ -331,6 +331,9 @@ uint8_t winnerJudgement()
 	}else if ((renderArray[6]==renderArray[7]&& renderArray[6]==renderArray[8]) && renderArray[6]==1)
 	{
 		return 1;
+	}else if ((renderArray[0]==renderArray[3]&& renderArray[0]==renderArray[6]) && renderArray[0]==0)
+	{
+		return 0;
 	}
 }
 
