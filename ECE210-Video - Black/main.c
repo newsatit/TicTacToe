@@ -162,15 +162,7 @@ void select()
                 curIndex=0;
                 break;
             }
-            
-          
 						
-						case PS2_DOWN:
-						{
-							ece210_wireless_send(curIndex);
-							character = curIndex;
-							return;			
-						}
 						
 						 default:
             {
@@ -178,6 +170,15 @@ void select()
             }
 							
         }
+				
+				if(btn_down_pressed()){
+					
+							AlertButtons=false;
+							ece210_wireless_send(curIndex);
+							character = curIndex;
+							return;			
+						
+				}
 				
 
 
