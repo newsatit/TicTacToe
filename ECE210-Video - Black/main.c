@@ -24,16 +24,25 @@
 #define REMOTE_ID 0x01
 uint32_t character;              //if character==0, then I'm "X"
                                  //if character==1, then I'm "O"
+boolean myTurn;
 //**********FUNCTION DECLARATION*********************
 void start();
 void play();
 void select();
+
 //***************************************************
 int main(void)
 {
     //main method starts
     ece210_initialize_board();  //start initializing the board
     start();        //call method start
+    select();
+    if(character == 0) {
+        myTurn = true;
+    } else {
+        myTurn = false;
+    }
+    play();
 }
 
 void start()
@@ -89,9 +98,6 @@ void select()
     ece210_lcd_add_msg("Press Right Button to select between X and O", TERMINAL_ALIGN_CENTER, LCD_COLOR_GREEN);
     ece210_lcd_add_msg("X Goes First", TERMINAL_ALIGN_CENTER, LCD_COLOR_RED);
     
-
-
-    
     ece210_lcd_draw_image(40,X_WIDTH_PXL,100 ,X_HEIGHT_PXL, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);            //draw the "x" on the left black rectangle
     ece210_lcd_draw_image(150,O_WIDTH_PXL,100 ,O_HEIGHT_PXL, O_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);            //draw the "o" on the right black rectangle
     
@@ -112,21 +118,21 @@ void select()
             break;
         }
         if(curIndex == 0) {
-					ece210_lcd_draw_rectangle(40, 50, 100, 50, LCD_COLOR_BLACK);    //clear the pic from the screen
-					ece210_wait_mSec(100);
+			ece210_lcd_draw_rectangle(40, 50, 100, 50, LCD_COLOR_BLACK);    //clear the pic from the screen
+			ece210_wait_mSec(100);
+			
+			ece210_lcd_draw_image(40,X_WIDTH_PXL,100 ,X_HEIGHT_PXL, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);    //draw the index 0 pic to the screen
+			ece210_wait_mSec(100);               //make it flashing
 					
-					ece210_lcd_draw_image(40,X_WIDTH_PXL,100 ,X_HEIGHT_PXL, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);    //draw the index 0 pic to the screen
-					ece210_wait_mSec(100);               //make it flashing
-					
-				} else if(curIndex == 1) {
-					ece210_lcd_draw_rectangle(150, 50, 100, 50, LCD_COLOR_BLACK);    //clear the pic from the screen
-					ece210_wait_mSec(100); 
-					
-					ece210_lcd_draw_image(150,O_WIDTH_PXL,100 ,O_HEIGHT_PXL, O_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);    //draw the index 0 pic to the screen
-					ece210_wait_mSec(100); 
-				}
+		} else if(curIndex == 1) {
+			ece210_lcd_draw_rectangle(150, 50, 100, 50, LCD_COLOR_BLACK);    //clear the pic from the screen
+			ece210_wait_mSec(100); 
+			
+			ece210_lcd_draw_image(150,O_WIDTH_PXL,100 ,O_HEIGHT_PXL, O_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);    //draw the index 0 pic to the screen
+			ece210_wait_mSec(100); 
+		}
 				
-				if(AlertButtons)
+		if(AlertButtons)
         {
             AlertButtons=false;
             if(btn_right_pressed())
