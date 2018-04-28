@@ -110,7 +110,7 @@ void select()
     	 ece210_lcd_add_msg("", TERMINAL_ALIGN_CENTER, LCD_COLOR_BLACK);
     }
 			//clear the pic from the screen
-    ece210_lcd_add_msg("Press Right Button to select between X and O", TERMINAL_ALIGN_CENTER, LCD_COLOR_GREEN);
+    ece210_lcd_add_msg("Press Down Button to select between X and O", TERMINAL_ALIGN_CENTER, LCD_COLOR_GREEN);
     ece210_lcd_add_msg("X Goes First", TERMINAL_ALIGN_CENTER, LCD_COLOR_RED);
     
     ece210_lcd_draw_image(40,X_WIDTH_PXL,100 ,X_HEIGHT_PXL, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);            //draw the "x" on the left black rectangle

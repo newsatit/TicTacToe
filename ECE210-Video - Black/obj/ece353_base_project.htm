@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\obj\ece353_base_project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\obj\ece353_base_project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Apr 28 16:51:30 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Apr 28 17:03:10 2018
 <BR><P>
 <H3>Maximum Stack Usage =        344 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -274,75 +274,78 @@ Global Symbols
 
 <P><STRONG><a name="[14f]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[7d]"></a>render_board</STRONG> (Thumb, 188 bytes, Stack size 24 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = render_board &rArr; ece210_lcd_draw_image &rArr; lcd_draw_image_right &rArr; lcd_set_pos &rArr; lcd_write_data_u16
-</UL>
-<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_rectangle
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_image
-</UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;play
-</UL>
-
-<P><STRONG><a name="[80]"></a>selection</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[7d]"></a>selection</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = selection &rArr; btn_right_pressed &rArr; ece210_buttons_read &rArr; io_expander_read_reg &rArr; i2cSendByte &rArr; I2CMasterBusy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_right_pressed
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_right_pressed
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;play
 </UL>
 
-<P><STRONG><a name="[82]"></a>render_selection</STRONG> (Thumb, 416 bytes, Stack size 16 bytes, main.o(.text))
+<P><STRONG><a name="[7f]"></a>render_selection</STRONG> (Thumb, 416 bytes, Stack size 16 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = render_selection &rArr; ece210_lcd_draw_image &rArr; lcd_draw_image_right &rArr; lcd_set_pos &rArr; lcd_write_data_u16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wait_mSec
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_ps2_read_position
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_rectangle
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_image
+<BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wait_mSec
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_ps2_read_position
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_rectangle
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_image
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;play
 </UL>
 
-<P><STRONG><a name="[85]"></a>play</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[84]"></a>render_board</STRONG> (Thumb, 188 bytes, Stack size 24 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = render_board &rArr; ece210_lcd_draw_image &rArr; lcd_draw_image_right &rArr; lcd_set_pos &rArr; lcd_write_data_u16
+</UL>
+<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_rectangle
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_image
+</UL>
+<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;play
+</UL>
+
+<P><STRONG><a name="[85]"></a>play</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = play &rArr; render_board &rArr; ece210_lcd_draw_image &rArr; lcd_draw_image_right &rArr; lcd_set_pos &rArr; lcd_write_data_u16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_rectangle
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_selection
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;selection
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_board
+<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_rectangle
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_board
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_selection
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;selection
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select
 </UL>
 
-<P><STRONG><a name="[86]"></a>select</STRONG> (Thumb, 302 bytes, Stack size 32 bytes, main.o(.text))
+<P><STRONG><a name="[86]"></a>select</STRONG> (Thumb, 454 bytes, Stack size 32 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = select &rArr; ece210_lcd_add_msg &rArr; terminal_add_msg &rArr; terminal_scroll &rArr; terminal_update_line &rArr; lcd_print_string &rArr; lcd_print_char &rArr; lcd_draw_char &rArr; lcd_set_pos &rArr; lcd_write_data_u16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_send
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_send
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_get
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_data_avaiable
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wait_mSec
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_ps2_read_position
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_rectangle
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_image
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wait_mSec
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_ps2_read_position
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_rectangle
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_image
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_add_msg
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_down_pressed
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_right_pressed
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_down_pressed
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;play
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8c]"></a>start</STRONG> (Thumb, 284 bytes, Stack size 24 bytes, main.o(.text))
+<P><STRONG><a name="[8c]"></a>start</STRONG> (Thumb, 120 bytes, Stack size 24 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = start &rArr; ece210_lcd_add_msg &rArr; terminal_add_msg &rArr; terminal_scroll &rArr; terminal_update_line &rArr; lcd_print_string &rArr; lcd_print_char &rArr; lcd_draw_char &rArr; lcd_set_pos &rArr; lcd_write_data_u16
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_send
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_send
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_init
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_get
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_data_avaiable
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_image
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_image
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_add_msg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, main.o(.text))
+<P><STRONG><a name="[76]"></a>main</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = main &rArr; select &rArr; ece210_lcd_add_msg &rArr; terminal_add_msg &rArr; terminal_scroll &rArr; terminal_update_line &rArr; lcd_print_string &rArr; lcd_print_char &rArr; lcd_draw_char &rArr; lcd_set_pos &rArr; lcd_write_data_u16
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_initialize_board
@@ -356,7 +359,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_buttons_read
 </UL>
 
-<P><STRONG><a name="[8a]"></a>btn_down_pressed</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, lab_buttons.o(.text))
+<P><STRONG><a name="[8b]"></a>btn_down_pressed</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, lab_buttons.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = btn_down_pressed &rArr; ece210_buttons_read &rArr; io_expander_read_reg &rArr; i2cSendByte &rArr; I2CMasterBusy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_buttons_read
@@ -368,12 +371,13 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_buttons_read
 </UL>
 
-<P><STRONG><a name="[81]"></a>btn_right_pressed</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, lab_buttons.o(.text))
+<P><STRONG><a name="[7e]"></a>btn_right_pressed</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, lab_buttons.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = btn_right_pressed &rArr; ece210_buttons_read &rArr; io_expander_read_reg &rArr; i2cSendByte &rArr; I2CMasterBusy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_buttons_read
 </UL>
-<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;selection
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;selection
 </UL>
 
 <P><STRONG><a name="[7a]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_tm4c123.o(.text))
@@ -1149,8 +1153,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_left_pressed
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_up_pressed
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_initialize_board
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_right_pressed
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_down_pressed
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_right_pressed
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;btn_down_pressed
 </UL>
 
 <P><STRONG><a name="[95]"></a>ece210_switches_read</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, ece210_api.o(.text), UNUSED)
@@ -1183,13 +1187,13 @@ Global Symbols
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
 </UL>
 
-<P><STRONG><a name="[84]"></a>ece210_wait_mSec</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, ece210_api.o(.text))
+<P><STRONG><a name="[83]"></a>ece210_wait_mSec</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, ece210_api.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = ece210_wait_mSec &rArr; gp_timer_set_32_bit_period &rArr; gp_timer_enable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gp_timer_set_32_bit_period
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_selection
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_selection
 </UL>
 
 <P><STRONG><a name="[9f]"></a>ece210_ps2_read_x</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, ece210_api.o(.text), UNUSED)
@@ -1200,14 +1204,14 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ps2_get_y
 </UL>
 
-<P><STRONG><a name="[83]"></a>ece210_ps2_read_position</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, ece210_api.o(.text))
+<P><STRONG><a name="[80]"></a>ece210_ps2_read_position</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, ece210_api.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ece210_ps2_read_position
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ps2_get_y
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ps2_get_x
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_selection
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_selection
 </UL>
 
 <P><STRONG><a name="[a3]"></a>ece210_audio_set_comparator_threshold</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, ece210_api.o(.text), UNUSED)
@@ -1256,7 +1260,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start
 </UL>
 
-<P><STRONG><a name="[8b]"></a>ece210_wireless_send</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, ece210_api.o(.text))
+<P><STRONG><a name="[8a]"></a>ece210_wireless_send</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, ece210_api.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = ece210_wireless_send &rArr; wireless_send_32 &rArr; wireless_clear_max_rt &rArr; wireless_reg_write &rArr; spiTx
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wireless_send_32
@@ -1312,26 +1316,26 @@ Global Symbols
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select
 </UL>
 
-<P><STRONG><a name="[7e]"></a>ece210_lcd_draw_rectangle</STRONG> (Thumb, 36 bytes, Stack size 32 bytes, ece210_api.o(.text))
+<P><STRONG><a name="[81]"></a>ece210_lcd_draw_rectangle</STRONG> (Thumb, 36 bytes, Stack size 32 bytes, ece210_api.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = ece210_lcd_draw_rectangle &rArr; lcd_draw_rectangle &rArr; lcd_set_pos &rArr; lcd_write_data_u16
 </UL>
 <BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_draw_rectangle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;play
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_selection
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_board
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_board
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_selection
 </UL>
 
-<P><STRONG><a name="[7f]"></a>ece210_lcd_draw_image</STRONG> (Thumb, 40 bytes, Stack size 48 bytes, ece210_api.o(.text))
+<P><STRONG><a name="[82]"></a>ece210_lcd_draw_image</STRONG> (Thumb, 40 bytes, Stack size 48 bytes, ece210_api.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = ece210_lcd_draw_image &rArr; lcd_draw_image_right &rArr; lcd_set_pos &rArr; lcd_write_data_u16
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_draw_image_right
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;select
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_selection
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_board
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_board
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;render_selection
 </UL>
 
 <P><STRONG><a name="[1f]"></a>TIMER1A_Handler</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, ece210_api.o(.text))
@@ -1415,7 +1419,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gp_timer_enable
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gp_timer_disable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wait_mSec
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wait_mSec
 </UL>
 
 <P><STRONG><a name="[cf]"></a>ft6x06_set_addr</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, ft6x06.o(.text), UNUSED)
@@ -1564,7 +1568,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_pixel
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_draw_pixel
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_rectangle
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_rectangle
 </UL>
 
 <P><STRONG><a name="[e8]"></a>lcd_draw_pixel</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, lcd.o(.text), UNUSED)
@@ -1590,7 +1594,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_set_pos
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lcd_write_data_u16
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_image
+<BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_lcd_draw_image
 </UL>
 
 <P><STRONG><a name="[ea]"></a>lcd_draw_image</STRONG> (Thumb, 242 bytes, Stack size 56 bytes, lcd.o(.text), UNUSED)
@@ -1778,12 +1782,12 @@ Global Symbols
 
 <P><STRONG><a name="[a0]"></a>ps2_get_x</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ps2.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_ps2_read_x
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_ps2_read_position
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_ps2_read_position
 </UL>
 
 <P><STRONG><a name="[a2]"></a>ps2_get_y</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, ps2.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_ps2_read_y
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_ps2_read_position
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_ps2_read_position
 </UL>
 
 <P><STRONG><a name="[154]"></a>ps2_get_direction</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, ps2.o(.text), UNUSED)
@@ -1895,7 +1899,7 @@ Global Symbols
 <LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wireless_reg_write
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wireless_reg_read
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_send
+<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ece210_wireless_send
 </UL>
 
 <P><STRONG><a name="[b6]"></a>wireless_get_32</STRONG> (Thumb, 130 bytes, Stack size 16 bytes, wireless.o(.text))
