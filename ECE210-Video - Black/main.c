@@ -298,7 +298,7 @@ void play()
        if(!myTurn) {
             if(ece210_wireless_data_avaiable()) {
                 int otherIndex = ece210_wireless_get();
-                renderArray[playindex] = !character;
+                renderArray[otherIndex] = !character;
                 myTurn = !myTurn;
             }
        } else {
