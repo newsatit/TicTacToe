@@ -20,8 +20,8 @@
 #define LCD_HALF_SIZE_Y	LCD_SIZE_Y/2	// Y center of screen in pixels
 uint16_t playindex = 0;
 
-#define LOCAL_ID 0x00
-#define REMOTE_ID 0x01
+#define LOCAL_ID 0x01
+#define REMOTE_ID 0x00
 uint32_t character;              //if character==0, then I'm "X"
                                  //if character==1, then I'm "O"
 
@@ -266,15 +266,14 @@ void render_selection()
             }
         }
 
-		
+		     ece210_lcd_draw_rectangle(renderArrayPosX[playindex],width_pixels, renderArrayPosY[playindex],height_pixels, LCD_COLOR_BLACK); 
+             ece210_wait_mSec(150);
 			if(character==0)
 			{
 				ece210_lcd_draw_image(renderArrayPosX[playindex],width_pixels, renderArrayPosY[playindex],height_pixels, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);
 			}else{
 				ece210_lcd_draw_image(renderArrayPosX[playindex],width_pixels, renderArrayPosY[playindex],height_pixels, O_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);
-			}
-					
-				
+			}	
 			ece210_wait_mSec(150);
 		
 		
@@ -283,24 +282,30 @@ void render_selection()
 	
 void selection()
 {
-		if( btn_right_pressed()){
-				renderArray[playindex] = character;
-		}
+	if( btn_right_pressed()){
+		renderArray[playindex] = character;
+        ece210_wireless_send(playindex);
+        myTurn = !myTurn;
+	}
 }	
-
 	
 void play()	
 {
-	
     ece210_lcd_draw_rectangle(0,240,0,320,LCD_COLOR_BLACK);
-		while(1){
-	  render_board();
-    if(!myTurn) {
 
-    } else {
-       render_selection();
-       selection();      
-		}
+	while(1){
+	   render_board();
+       if(!myTurn) {
+            if(ece210_wireless_data_avaiable()) {
+                int otherIndex = ece210_wireless_get();
+                renderArray[playindex] = !character;
+                myTurn = !myTurn;
+            }
+       } else {
+           render_selection();
+           selection();      
+       }
+
 	}
     
 }
