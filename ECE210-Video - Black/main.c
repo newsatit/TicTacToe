@@ -24,8 +24,10 @@ uint16_t playindex = 0;
 #define REMOTE_ID 0x01
 uint32_t character;              //if character==0, then I'm "X"
                                  //if character==1, then I'm "O"
-																 
-															
+
+int myTurn;
+
+																										
   uint16_t 	x_pos =  20	;// x_pos holds the x position of the right corner of the image
   uint16_t 	y_pos = 20;		// y_pos holds the y position of the lower corner of the image
   uint16_t	width_pixels = X_WIDTH_PXL;		// width of the imsge in pixels
@@ -37,18 +39,25 @@ uint32_t character;              //if character==0, then I'm "X"
 
 																	
 	int image=1;
+
 //**********FUNCTION DECLARATION*********************
 void start();
 void play();
 void select();
+
 //***************************************************
 int main(void)
 {
     //main method starts
     ece210_initialize_board();  //start initializing the board
     start();        //call method start
-		select();
-		play();
+    select();
+    if(character == 0) {
+        myTurn = 1;
+    } else {
+        myTurn = 0;
+    }
+    play();
 }
 
 void start()
@@ -97,24 +106,18 @@ void select()
     uint8_t direction;
     //*****************************************************
     //display the message first
-	  for(uint8_t i = 0; i < 20 ; i ++){
-			 ece210_lcd_add_msg("", TERMINAL_ALIGN_CENTER, LCD_COLOR_BLACK);
-		}
+    for(uint8_t i = 0; i < 20 ; i ++){
+    	 ece210_lcd_add_msg("", TERMINAL_ALIGN_CENTER, LCD_COLOR_BLACK);
+    }
 			//clear the pic from the screen
     ece210_lcd_add_msg("Press Right Button to select between X and O", TERMINAL_ALIGN_CENTER, LCD_COLOR_GREEN);
     ece210_lcd_add_msg("X Goes First", TERMINAL_ALIGN_CENTER, LCD_COLOR_RED);
-    
-
-
     
     ece210_lcd_draw_image(40,X_WIDTH_PXL,100 ,X_HEIGHT_PXL, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);            //draw the "x" on the left black rectangle
     ece210_lcd_draw_image(150,O_WIDTH_PXL,100 ,O_HEIGHT_PXL, O_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);            //draw the "o" on the right black rectangle
     
     while(1)
-    {
-			
-
-				
+    {	
         otherPlayer = 0;
         if(ece210_wireless_data_avaiable()) {
             otherPlayer = ece210_wireless_get();
@@ -129,23 +132,31 @@ void select()
            
         }
         if(curIndex == 0) {
-					ece210_lcd_draw_rectangle(40, 50, 100, 50, LCD_COLOR_BLACK);    //clear the pic from the screen
-					ece210_wait_mSec(100);
+			ece210_lcd_draw_rectangle(40, 50, 100, 50, LCD_COLOR_BLACK);    //clear the pic from the screen
+			ece210_wait_mSec(100);
+			
+			ece210_lcd_draw_image(40,X_WIDTH_PXL,100 ,X_HEIGHT_PXL, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);    //draw the index 0 pic to the screen
+			ece210_wait_mSec(100);               //make it flashing
 					
-					ece210_lcd_draw_image(40,X_WIDTH_PXL,100 ,X_HEIGHT_PXL, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);    //draw the index 0 pic to the screen
-					ece210_wait_mSec(100);               //make it flashing
-					
-				} else if(curIndex == 1) {
-					ece210_lcd_draw_rectangle(150, 50, 100, 50, LCD_COLOR_BLACK);    //clear the pic from the screen
-					ece210_wait_mSec(100); 
-					
-					ece210_lcd_draw_image(150,O_WIDTH_PXL,100 ,O_HEIGHT_PXL, O_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);    //draw the index 0 pic to the screen
-					ece210_wait_mSec(100); 
-				}
-		
+		} else if(curIndex == 1) {
+			ece210_lcd_draw_rectangle(150, 50, 100, 50, LCD_COLOR_BLACK);    //clear the pic from the screen
+			ece210_wait_mSec(100); 
+			
+			ece210_lcd_draw_image(150,O_WIDTH_PXL,100 ,O_HEIGHT_PXL, O_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);    //draw the index 0 pic to the screen
+			ece210_wait_mSec(100); 
+		}
 				
-				
-        
+		if(AlertButtons)
+        {
+            AlertButtons=false;
+            if(btn_right_pressed())
+            {
+                ece210_wireless_send(curIndex);
+                character = curIndex;
+                play();
+				break;
+            }
+        }
         direction=ece210_ps2_read_position();   
         switch(direction)
         {
@@ -159,10 +170,8 @@ void select()
             {
                 curIndex=0;
                 break;
-            }
-						
-						
-						 default:
+            }			
+			default:
             {
                 break;
             }
@@ -193,8 +202,7 @@ void render_board()
 	ece210_lcd_draw_rectangle(10,220,100,5,LCD_COLOR_RED);
 	ece210_lcd_draw_rectangle(10,220,190,5,LCD_COLOR_RED);
 	
-for(uint16_t i = 0; i < 9; i++){
-		
+    for(uint16_t i = 0; i < 9; i++){
 		if ( renderArray[i] == 0){		
 			ece210_lcd_draw_image(renderArrayPosX[i],width_pixels, renderArrayPosY[i],height_pixels, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);
 		}
@@ -231,7 +239,7 @@ void render_selection()
 								}
                 break;
             }
-						case PS2_UP:
+			case PS2_UP:
             {
                 if(playindex > 2){
 									playindex= playindex - 3;;
@@ -241,7 +249,7 @@ void render_selection()
 								}
                 break;
             }
-						case PS2_DOWN:
+			case PS2_DOWN:
             {
                 if(playindex < 6){
 									playindex= playindex + 3;;
@@ -251,7 +259,6 @@ void render_selection()
 								}
                 break;
             }
-            
             default:
             {
                 break;
@@ -277,17 +284,18 @@ void render_selection()
 					renderArray[playindex] = character;
 			}
 	}	
+
 	
 void play()	
 {
 	
-ece210_lcd_draw_rectangle(0,240,0,320,LCD_COLOR_BLACK);
+    ece210_lcd_draw_rectangle(0,240,0,320,LCD_COLOR_BLACK);
 	while(1){
-	render_board();
-	render_selection();
-	selection();
-	render_board();
-		
+		render_board();
+		render_selection();
+		selection();
+		render_board();
+
 	}
     
 }
