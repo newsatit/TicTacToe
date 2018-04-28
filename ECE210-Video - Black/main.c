@@ -181,17 +181,14 @@ void select()
 							
         }
 				
-				if(btn_down_pressed()){
-					
-							AlertButtons=false;
-							ece210_wireless_send(curIndex);
-							character = curIndex;
-							return;			
-						
-				}
+		if(btn_down_pressed()){
+			
+			AlertButtons=false;
+			ece210_wireless_send(curIndex);
+			character = curIndex;
+			return;			
 				
-
-
+		}
     }
 		
 		
@@ -266,8 +263,10 @@ void render_selection()
                 break;
             }
         }
+        ece210_lcd_draw_rectangle(renderArrayPosX[curIndex],width_pixels, renderArrayPosY[curIndex],height_pixels, LCD_COLOR_BLACK);
+        ece210_wait_mSec(150);
 		ece210_lcd_draw_image(renderArrayPosX[curIndex],width_pixels, renderArrayPosY[curIndex],height_pixels, p_imageDisplay ,LCD_COLOR_RED, LCD_COLOR_BLACK);
-		ece210_wait_mSec(  150 );	
+		ece210_wait_mSec(150);	
 }
 void selection()
 {
@@ -293,8 +292,12 @@ void play()
     ece210_lcd_draw_rectangle(0,240,0,320,LCD_COLOR_BLACK);
 	while(1){
 	   render_board();
-	   render_selection();
-	   selection();
+       if(!myTurn) {
+
+       } else {
+           render_selection();
+           selection();      
+       }
 	   render_board();
 		
 	}
