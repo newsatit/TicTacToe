@@ -27,43 +27,23 @@ Project File Date:  04/25/2018
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Program Files\keil\ARM\ARMCC\Bin'
 Rebuild target 'ECE353-Test-Code'
-compiling lab_buttons.c...
-compiling main.c...
-main.c(28): warning:  #1295-D: Deprecated declaration start - give arg types
-  void start();
-main.c(29): warning:  #1295-D: Deprecated declaration play - give arg types
-  void play();
-main.c(30): warning:  #1295-D: Deprecated declaration select - give arg types
-  void select();
-main.c(183): warning:  #177-D: variable "width_pixels"  was declared but never referenced
-  		uint16_t	width_pixels = X_WIDTH_PXL;
-main.c(184): warning:  #177-D: variable "height_pixels"  was declared but never referenced
-  		uint16_t 	height_pixels = X_HEIGHT_PXL;
-main.c(186): warning:  #177-D: variable "width_pixels"  was declared but never referenced
-  		uint16_t	width_pixels = O_WIDTH_PXL;
-main.c(187): warning:  #177-D: variable "height_pixels"  was declared but never referenced
-  		uint16_t 	height_pixels = O_HEIGHT_PXL;
-main.c(173): warning:  #177-D: variable "x_pos"  was declared but never referenced
-  	uint16_t 	x_pos =  20	;// x_pos holds the x position of the right corner of the image
-main.c(175): warning:  #177-D: variable "renderArray"  was declared but never referenced
-  	uint16_t renderArray[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-main.c(176): warning:  #177-D: variable "renderArrayPosX"  was declared but never referenced
-    uint16_t renderArrayPosX[9] = {20, 100, 180,  20, 100, 180,  20, 100, 180};
-main.c(177): warning:  #177-D: variable "renderArrayPosY"  was declared but never referenced
-  	uint16_t renderArrayPosY[9] = {20,  20,  20, 120, 120, 120, 200, 200, 200};
-main.c(178): warning:  #177-D: variable "direction"  was declared but never referenced
-  	uint8_t direction;
-main.c(179): warning:  #177-D: variable "curIndex"  was declared but never referenced
-  	uint16_t curIndex = 0;
-main.c: 13 warnings, 0 errors
 compiling Logo.black.c...
+compiling main.c...
+main.c(43): warning:  #1295-D: Deprecated declaration start - give arg types
+  void start();
+main.c(44): warning:  #1295-D: Deprecated declaration play - give arg types
+  void play();
+main.c(45): warning:  #1295-D: Deprecated declaration select - give arg types
+  void select();
+main.c: 3 warnings, 0 errors
+compiling lab_buttons.c...
 assembling startup_TM4C123.s...
 compiling O_IMAGE.c...
 compiling x_IMAGE_BITMAP.c...
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=19540 RO-data=6692 RW-data=44 ZI-data=6652  
-".\obj\ece353_base_project.axf" - 0 Error(s), 13 Warning(s).
+Program Size: Code=20100 RO-data=6652 RW-data=108 ZI-data=6668  
+".\obj\ece353_base_project.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
