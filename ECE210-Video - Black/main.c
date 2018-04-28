@@ -18,25 +18,23 @@
 #define LCD_MAX_DRAW_Y	LCD_SIZE_Y-1	// 0 to LCD_MAX_DRAW_Y is = LCD_SIZE_Y
 #define LCD_HALF_SIZE_X	LCD_SIZE_X/2	// X center of screen in pixels
 #define LCD_HALF_SIZE_Y	LCD_SIZE_Y/2	// Y center of screen in pixels
-
+uint16_t playindex = 0;
 
 #define LOCAL_ID 0x00
 #define REMOTE_ID 0x01
 uint32_t character;              //if character==0, then I'm "X"
                                  //if character==1, then I'm "O"
 																 
-																 const uint8_t*p_image=X_bitmap;
-																 const uint8_t*p_image2=O_bitmap;
-																 const uint8_t*p_imageDisplay;
+															
   uint16_t 	x_pos =  20	;// x_pos holds the x position of the right corner of the image
   uint16_t 	y_pos = 20;		// y_pos holds the y position of the lower corner of the image
   uint16_t	width_pixels = X_WIDTH_PXL;		// width of the imsge in pixels
 	uint16_t 	height_pixels = X_WIDTH_PXL;	// height of the image in pixels
-	uint16_t renderArray[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+	uint16_t renderArray[9] = {2, 2, 2, 2, 2, 2, 2, 2, 2};   //0 is x, 1 is o, 2 is empty
   uint16_t renderArrayPosX[9] = {20, 100, 180,  20, 100, 180,  20, 100, 180};
 	uint16_t renderArrayPosY[9] = {20,  20,  20, 120, 120, 120, 200, 200, 200};
 	uint8_t direction;
-	uint16_t curIndex = 0;
+
 																	
 	int image=1;
 //**********FUNCTION DECLARATION*********************
@@ -172,12 +170,9 @@ void select()
         }
 				
 				if(btn_down_pressed()){
-					
-							AlertButtons=false;
 							ece210_wireless_send(curIndex);
 							character = curIndex;
 							return;			
-						
 				}
 				
 
@@ -186,8 +181,13 @@ void select()
 		
 		
 }
+
+
+
+
 void render_board()
 {
+	uint16_t curIndex = 0;
 	ece210_lcd_draw_rectangle(80,5,y_pos,240,LCD_COLOR_RED);
 	ece210_lcd_draw_rectangle(160,5,y_pos,240,LCD_COLOR_RED);
 	ece210_lcd_draw_rectangle(10,220,100,5,LCD_COLOR_RED);
@@ -195,11 +195,11 @@ void render_board()
 	
 for(uint16_t i = 0; i < 9; i++){
 		
-		if ( renderArray[i] == 1){		
-			ece210_lcd_draw_image(renderArrayPosX[i],width_pixels, renderArrayPosY[i],height_pixels, p_image ,LCD_COLOR_RED, LCD_COLOR_BLACK);
+		if ( renderArray[i] == 0){		
+			ece210_lcd_draw_image(renderArrayPosX[i],width_pixels, renderArrayPosY[i],height_pixels, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);
 		}
-		if ( renderArray[i] == 2){		
-			ece210_lcd_draw_image(renderArrayPosX[i],width_pixels, renderArrayPosY[i],height_pixels, p_image2 ,LCD_COLOR_RED, LCD_COLOR_BLACK);
+		if ( renderArray[i] == 1){		
+			ece210_lcd_draw_image(renderArrayPosX[i],width_pixels, renderArrayPosY[i],height_pixels, O_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);
 		}
 	}
 }
@@ -212,43 +212,43 @@ void render_selection()
         {
             case PS2_RIGHT:
             {
-							if(curIndex < 8){
-                curIndex++;
+							if(playindex < 8){
+                playindex++;
 							}
-							if(curIndex != 0){
-			ece210_lcd_draw_rectangle(renderArrayPosX[curIndex-1],width_pixels,renderArrayPosY[curIndex-1],height_pixels,LCD_COLOR_BLACK);	
-				}
+							if(playindex != 0){
+								ece210_lcd_draw_rectangle(renderArrayPosX[playindex-1],width_pixels,renderArrayPosY[playindex-1],height_pixels,LCD_COLOR_BLACK);	
+							}
                 break;
             }
             
             case PS2_LEFT:
             {
-                if(curIndex > 0){
-                curIndex--;
-							}
-								if(curIndex != 8){
-			ece210_lcd_draw_rectangle(renderArrayPosX[curIndex+1],width_pixels,renderArrayPosY[curIndex+1],height_pixels,LCD_COLOR_BLACK);	
-				}
+                if(playindex > 0){
+									playindex--;
+								}
+								if(playindex!= 8){
+								ece210_lcd_draw_rectangle(renderArrayPosX[playindex+1],width_pixels,renderArrayPosY[playindex+1],height_pixels,LCD_COLOR_BLACK);	
+								}
                 break;
             }
 						case PS2_UP:
             {
-                if(curIndex > 2){
-                curIndex= curIndex - 3;;
-							}
-								if(curIndex < 6){
-			ece210_lcd_draw_rectangle(renderArrayPosX[curIndex+3],width_pixels,renderArrayPosY[curIndex+3],height_pixels,LCD_COLOR_BLACK);	
-				}
+                if(playindex > 2){
+									playindex= playindex - 3;;
+								}
+								if(playindex < 6){
+									ece210_lcd_draw_rectangle(renderArrayPosX[playindex+3],width_pixels,renderArrayPosY[playindex+3],height_pixels,LCD_COLOR_BLACK);	
+								}
                 break;
             }
 						case PS2_DOWN:
             {
-                if(curIndex < 6){
-                curIndex= curIndex + 3;;
-							}
-								if(curIndex > 2){
-			ece210_lcd_draw_rectangle(renderArrayPosX[curIndex-3],width_pixels,renderArrayPosY[curIndex-3],height_pixels,LCD_COLOR_BLACK);	
-				}
+                if(playindex < 6){
+									playindex= playindex + 3;;
+								}
+								if(playindex > 2){
+									ece210_lcd_draw_rectangle(renderArrayPosX[playindex-3],width_pixels,renderArrayPosY[playindex-3],height_pixels,LCD_COLOR_BLACK);	
+								}
                 break;
             }
             
@@ -258,36 +258,25 @@ void render_selection()
             }
         }
 		
-		
-			ece210_lcd_draw_image(renderArrayPosX[curIndex],width_pixels, renderArrayPosY[curIndex],height_pixels, p_imageDisplay ,LCD_COLOR_RED, LCD_COLOR_BLACK);
-				
+			if(character==0)
+			{
+				ece210_lcd_draw_image(renderArrayPosX[playindex],width_pixels, renderArrayPosY[playindex],height_pixels, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);
+			}else{
+				ece210_lcd_draw_image(renderArrayPosX[playindex],width_pixels, renderArrayPosY[playindex],height_pixels, O_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);
+			}
 					
 				
-				ece210_wait_mSec(  150 );
+			ece210_wait_mSec(150);
 		
 		
 	
 }
 	void selection()
 	{
-if(AlertButtons){
-			AlertButtons=false;
 			if( btn_right_pressed()){
-
-					renderArray[curIndex] = 1;
-					
-					}
-			
-						if(btn_left_pressed()){
-
-					renderArray[curIndex] = 2;
-					
-				}
-					}
-					
-			
-		
-			}	
+					renderArray[playindex] = character;
+			}
+	}	
 	
 void play()	
 {
@@ -295,9 +284,9 @@ void play()
 ece210_lcd_draw_rectangle(0,240,0,320,LCD_COLOR_BLACK);
 	while(1){
 	render_board();
-		render_selection();
-		selection();
-		render_board();
+	render_selection();
+	selection();
+	render_board();
 		
 	}
     
