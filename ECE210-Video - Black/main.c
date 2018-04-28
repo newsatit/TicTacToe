@@ -107,7 +107,7 @@ void select()
             } else if(otherPlayer == 1) {
                 character = 0;
             }
-            select();
+            play();
             
             break;
         }
@@ -126,7 +126,17 @@ void select()
 					ece210_wait_mSec(100); 
 				}
 				
-
+				if(AlertButtons)
+        {
+            AlertButtons=false;
+            if(btn_right_pressed())
+            {
+                ece210_wireless_send(curIndex);
+                character = curIndex;
+                play();
+							break;
+            }
+        }
         
         direction=ece210_ps2_read_position();   
         switch(direction)
@@ -148,23 +158,42 @@ void select()
                 break;
             }
         }
+				
+			
         
-        if(AlertButtons)
-        {
-            AlertButtons=false;
-            if(btn_down_pressed())
-            {
-                ece210_wireless_send(curIndex);
-                character = curIndex;
-                play();
-                break;
-            }
-        }
     }
+		
+		
 }
 
-void play()        
+void play()	
 {
+	
+	//**************LOCAL VARIABLES*******************
+	uint16_t 	x_pos =  20	;// x_pos holds the x position of the right corner of the image
+  uint16_t 	y_pos = 20;		// y_pos holds the y position of the lower corner of the image
+	uint16_t renderArray[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+  uint16_t renderArrayPosX[9] = {20, 100, 180,  20, 100, 180,  20, 100, 180};
+	uint16_t renderArrayPosY[9] = {20,  20,  20, 120, 120, 120, 200, 200, 200};
+	uint8_t direction;
+	uint16_t curIndex = 0;
+	
+	if(character==0)	//if the character is x
+	{
+		uint16_t	width_pixels = X_WIDTH_PXL;
+		uint16_t 	height_pixels = X_HEIGHT_PXL;
+	}else{
+		uint16_t	width_pixels = O_WIDTH_PXL;
+		uint16_t 	height_pixels = O_HEIGHT_PXL;
+	}
+	//*****************************************************************
+	ece210_lcd_draw_rectangle(0, 240, 0, 320, LCD_COLOR_BLACK); 
+	ece210_lcd_draw_rectangle(80,5,y_pos,240,LCD_COLOR_RED);
+	ece210_lcd_draw_rectangle(160,5,y_pos,240,LCD_COLOR_RED);
+	ece210_lcd_draw_rectangle(10,220,100,5,LCD_COLOR_RED);
+	ece210_lcd_draw_rectangle(10,220,190,5,LCD_COLOR_RED);
+	
+
     
 }
 
