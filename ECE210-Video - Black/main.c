@@ -267,14 +267,14 @@ void render_selection()
         }
 
 		     ece210_lcd_draw_rectangle(renderArrayPosX[playindex],width_pixels, renderArrayPosY[playindex],height_pixels, LCD_COLOR_BLACK); 
-             ece210_wait_mSec(150);
+             ece210_wait_mSec(50);
 			if(character==0)
 			{
 				ece210_lcd_draw_image(renderArrayPosX[playindex],width_pixels, renderArrayPosY[playindex],height_pixels, X_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);
 			}else{
 				ece210_lcd_draw_image(renderArrayPosX[playindex],width_pixels, renderArrayPosY[playindex],height_pixels, O_bitmap ,LCD_COLOR_RED, LCD_COLOR_BLACK);
 			}	
-			ece210_wait_mSec(150);
+			ece210_wait_mSec(50);
 		
 		
 	
