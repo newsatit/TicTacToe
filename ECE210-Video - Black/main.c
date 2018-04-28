@@ -44,7 +44,7 @@ int myTurn;
 void start();
 void play();
 void select();
-
+uint8_t winnerJudgement();
 //***************************************************
 int main(void)
 {
@@ -293,16 +293,39 @@ void play()
 {
 	
     ece210_lcd_draw_rectangle(0,240,0,320,LCD_COLOR_BLACK);
-	while(1){
-	   render_board();
-       if(!myTurn) {
+		while(1){
+	  render_board();
+    if(!myTurn) {
 
-       } else {
-           render_selection();
-           selection();      
-       }
-
+    } else {
+       render_selection();
+       selection();      
+		}
 	}
     
+}
+
+
+uint8_t winnerJudgement()
+{
+	if((renderArray[0]==renderArray[1] && renderArray[1]==renderArray[2]) && renderArray[0]==0)
+	{
+		return 0;
+	}else if((renderArray[0]==renderArray[1] && renderArray[1]==renderArray[2] )&& renderArray[0]==1)
+	{
+		return 1;
+	}else if ((renderArray[3]==renderArray[4]&& renderArray[3]==renderArray[5]) && renderArray[3]==0)
+	{
+		return 0;
+	}else if ((renderArray[3]==renderArray[4]&& renderArray[3]==renderArray[5]) && renderArray[3]==1)
+	{
+		return 1;
+	}else if ((renderArray[6]==renderArray[7]&& renderArray[6]==renderArray[8]) && renderArray[6]==0)
+	{
+		return 0;
+	}else if ((renderArray[6]==renderArray[7]&& renderArray[6]==renderArray[8]) && renderArray[6]==1)
+	{
+		return 1;
+	}
 }
 
