@@ -301,7 +301,6 @@ void play()
            render_selection();
            selection();      
        }
-	   render_board();	
 
 	}
     
