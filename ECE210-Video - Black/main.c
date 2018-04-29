@@ -8,6 +8,9 @@
 #include "stdlib.h"
 #include "x_IMAGE_BITMAP.h"
 #include "O_IMAGE.h"
+#include "XWIN_IMAGE_BITMAP.h"
+#include "YWIN_IMAGE_BITMAP.h"
+#include "XYWIN_IMAGE_BITMAP.h"
 
 #define LCD_SIZE_X 240              //X size of LCD screen in pixels
 #define LCD_SIZE_Y 320              //Y size of LCD screen in pixels
@@ -20,10 +23,11 @@
 #define LCD_HALF_SIZE_Y	LCD_SIZE_Y/2	// Y center of screen in pixels
 uint16_t playindex = 0;
 
-#define LOCAL_ID 0x01
-#define REMOTE_ID 0x00
+#define LOCAL_ID 0x00
+#define REMOTE_ID 0x01
 uint32_t character;              //if character==0, then I'm "X"
                                  //if character==1, then I'm "O"
+uint8_t winner;
 
 int myTurn;
 
@@ -44,7 +48,7 @@ int myTurn;
 void start();
 void play();
 void select();
-uint8_t winnerJudgement();
+void winnerJudgement();
 //***************************************************
 int main(void)
 {
@@ -58,6 +62,25 @@ int main(void)
         myTurn = 0;
     }
     play();
+		
+		ece210_lcd_draw_rectangle(0,240,0,320,LCD_COLOR_BLACK);
+		for(uint8_t i=0;i<15;i++)
+		{
+			ece210_lcd_add_msg("", TERMINAL_ALIGN_CENTER, LCD_COLOR_BLACK);
+		}
+		if(winner==0)
+		{
+			 ece210_lcd_draw_image(LCD_INIT_X+20, XWIN_WIDTH_PXL ,LCD_INIT_Y ,XWIN_HEIGHT_PXL, XWIN_bitmap ,LCD_COLOR_BLUE, LCD_COLOR_BLACK);
+		}else if (winner==1)
+		{
+			ece210_lcd_draw_image(LCD_INIT_X+20, YWIN_WIDTH_PXL ,LCD_INIT_Y ,YWIN_HEIGHT_PXL, YWIN_bitmap ,LCD_COLOR_ORANGE, LCD_COLOR_BLACK);
+		}else if (winner==3)
+		{
+			ece210_lcd_draw_image(LCD_INIT_X+20, XYWIN_WIDTH_PXL ,LCD_INIT_Y ,XYWIN_HEIGHT_PXL, XYWIN_bitmap ,LCD_COLOR_GREEN, LCD_COLOR_BLACK);
+		}
+		
+		
+		
 }
 
 void start()
@@ -146,17 +169,7 @@ void select()
 			ece210_wait_mSec(100); 
 		}
 				
-		if(AlertButtons)
-        {
-            AlertButtons=false;
-            if(btn_right_pressed())
-            {
-                ece210_wireless_send(curIndex);
-                character = curIndex;
-                play();
-				break;
-            }
-        }
+		
         direction=ece210_ps2_read_position();   
         switch(direction)
         {
@@ -282,10 +295,13 @@ void render_selection()
 	
 void selection()
 {
-	if( btn_right_pressed()){
-		renderArray[playindex] = character;
+	if( btn_down_pressed()){
+		if(renderArray[playindex]==2)
+		{
+			renderArray[playindex] = character;
         ece210_wireless_send(playindex);
         myTurn = !myTurn;
+		}
 	}
 }	
 	
@@ -305,35 +321,86 @@ void play()
            render_selection();
            selection();      
        }
-
+			 
+			 winnerJudgement();
+			 if(winner!=2)
+			 {
+				 break;
+			 }
 	}
+	
+	return;
     
 }
 
 
-uint8_t winnerJudgement()
+void winnerJudgement()
 {
+	uint8_t full=0;					//0--full, 1--not full
+	for(uint8_t i=0;i<9;i++)
+	{
+		if(renderArray[i]==2)
+		{
+			full=1;
+			break;
+		}
+	}
+	
+	
+	//0--xwin , 1--owin, 2--no winner, 3--draw
 	if((renderArray[0]==renderArray[1] && renderArray[1]==renderArray[2]) && renderArray[0]==0)
 	{
-		return 0;
+		winner=0;
 	}else if((renderArray[0]==renderArray[1] && renderArray[1]==renderArray[2] )&& renderArray[0]==1)
 	{
-		return 1;
+		winner=1;
 	}else if ((renderArray[3]==renderArray[4]&& renderArray[3]==renderArray[5]) && renderArray[3]==0)
 	{
-		return 0;
+		winner=0;
 	}else if ((renderArray[3]==renderArray[4]&& renderArray[3]==renderArray[5]) && renderArray[3]==1)
 	{
-		return 1;
+		winner=1;
 	}else if ((renderArray[6]==renderArray[7]&& renderArray[6]==renderArray[8]) && renderArray[6]==0)
 	{
-		return 0;
+		winner=0;
 	}else if ((renderArray[6]==renderArray[7]&& renderArray[6]==renderArray[8]) && renderArray[6]==1)
 	{
-		return 1;
+		winner=1;
 	}else if ((renderArray[0]==renderArray[3]&& renderArray[0]==renderArray[6]) && renderArray[0]==0)
 	{
-		return 0;
+		winner=0;
+	}else if ((renderArray[0]==renderArray[3]&& renderArray[0]==renderArray[6]) && renderArray[0]==1)
+	{
+		winner=1;
+	}else if ((renderArray[1]==renderArray[4]&& renderArray[1]==renderArray[7]) && renderArray[1]==0)
+	{
+		winner=0;
+	}else if ((renderArray[1]==renderArray[4]&& renderArray[1]==renderArray[7]) && renderArray[1]==1)
+	{
+		winner=1;
+	}else if ((renderArray[2]==renderArray[5]&& renderArray[2]==renderArray[8]) && renderArray[2]==0)
+	{
+		winner=0;
+	}else if ((renderArray[2]==renderArray[5]&& renderArray[2]==renderArray[8]) && renderArray[2]==1)
+	{
+		winner=1;
+	}else if ((renderArray[0]==renderArray[4] && renderArray[0]==renderArray[8]) && renderArray[0]==0)
+	{
+		winner=0;
+	}else if ((renderArray[0]==renderArray[4] && renderArray[0]==renderArray[8]) && renderArray[0]==1)
+	{
+		winner=1;
+	}else if ((renderArray[2]==renderArray[4] && renderArray[2]==renderArray[6]) && renderArray[2]==0)
+	{
+		winner=0;
+	}else if ((renderArray[2]==renderArray[4] && renderArray[2]==renderArray[6]) && renderArray[2]==1)
+	{
+		winner=1;
+	}else if(full==0)
+	{
+		winner=3;
+	}else{
+		winner=2;
 	}
 }
 

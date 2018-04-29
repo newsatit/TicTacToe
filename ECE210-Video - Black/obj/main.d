@@ -17,3 +17,6 @@
 .\obj\main.o: E:\Program Files\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\obj\main.o: x_IMAGE_BITMAP.h
 .\obj\main.o: O_IMAGE.h
+.\obj\main.o: XWIN_IMAGE_BITMAP.h
+.\obj\main.o: YWIN_IMAGE_BITMAP.h
+.\obj\main.o: XYWIN_IMAGE_BITMAP.h

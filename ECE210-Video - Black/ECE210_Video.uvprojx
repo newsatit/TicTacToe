@@ -431,6 +431,36 @@
               <FileType>5</FileType>
               <FilePath>.\x_IMAGE_BITMAP.h</FilePath>
             </File>
+            <File>
+              <FileName>XWIN_IMAGE_BITMAP.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\XWIN_IMAGE_BITMAP.c</FilePath>
+            </File>
+            <File>
+              <FileName>XWIN_IMAGE_BITMAP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\XWIN_IMAGE_BITMAP.h</FilePath>
+            </File>
+            <File>
+              <FileName>YWIN_IMAGE_BITMAP.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\YWIN_IMAGE_BITMAP.c</FilePath>
+            </File>
+            <File>
+              <FileName>YWIN_IMAGE_BITMAP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\YWIN_IMAGE_BITMAP.h</FilePath>
+            </File>
+            <File>
+              <FileName>XYWIN_IMAGE_BITMAP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\XYWIN_IMAGE_BITMAP.h</FilePath>
+            </File>
+            <File>
+              <FileName>XYWIN_IMAGE_BITMAP.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\XYWIN_IMAGE_BITMAP.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

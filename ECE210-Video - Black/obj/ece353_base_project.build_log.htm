@@ -22,34 +22,35 @@ Dialog DLL:      TCM.DLL V1.35.1.0
  
 <h2>Project:</h2>
 E:\ECE210 Final Project\ECE210-Video-Black\ECE210-Video - Black\ECE210_Video.uvprojx
-Project File Date:  04/25/2018
+Project File Date:  04/28/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Program Files\keil\ARM\ARMCC\Bin'
 Rebuild target 'ECE353-Test-Code'
 compiling Logo.black.c...
-compiling main.c...
-main.c(44): warning:  #1295-D: Deprecated declaration start - give arg types
-  void start();
-main.c(45): warning:  #1295-D: Deprecated declaration play - give arg types
-  void play();
-main.c(46): warning:  #1295-D: Deprecated declaration select - give arg types
-  void select();
-main.c(47): warning:  #1295-D: Deprecated declaration winnerJudgement - give arg types
-  uint8_t winnerJudgement();
-main.c(200): warning:  #177-D: variable "curIndex"  was declared but never referenced
-  	uint16_t curIndex = 0;
-main.c(335): warning:  #940-D: missing return statement at end of non-void function "winnerJudgement" 
-  }
-main.c: 6 warnings, 0 errors
 compiling lab_buttons.c...
-assembling startup_TM4C123.s...
-compiling O_IMAGE.c...
+compiling main.c...
+main.c(48): warning:  #1295-D: Deprecated declaration start - give arg types
+  void start();
+main.c(49): warning:  #1295-D: Deprecated declaration play - give arg types
+  void play();
+main.c(50): warning:  #1295-D: Deprecated declaration select - give arg types
+  void select();
+main.c(51): warning:  #1295-D: Deprecated declaration winnerJudgement - give arg types
+  void winnerJudgement();
+main.c(213): warning:  #177-D: variable "curIndex"  was declared but never referenced
+  	uint16_t curIndex = 0;
+main.c: 5 warnings, 0 errors
 compiling x_IMAGE_BITMAP.c...
+compiling O_IMAGE.c...
+compiling XWIN_IMAGE_BITMAP.c...
+assembling startup_TM4C123.s...
+compiling YWIN_IMAGE_BITMAP.c...
+compiling XYWIN_IMAGE_BITMAP.c...
 compiling system_TM4C123.c...
 linking...
-Program Size: Code=20416 RO-data=6652 RW-data=120 ZI-data=6648  
-".\obj\ece353_base_project.axf" - 0 Error(s), 6 Warning(s).
+Program Size: Code=21056 RO-data=10904 RW-data=124 ZI-data=6652  
+".\obj\ece353_base_project.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -75,10 +76,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.1.1
 
    * Component: Keil::Device:Startup:1.0.1
-      Source file:   Device\Source\system_TM4C123.c
       Include file:  Device\Include\TM4C123\TM4C123.h
       Source file:   Device\Source\ARM\startup_TM4C123.s
-Build Time Elapsed:  00:00:01
+      Source file:   Device\Source\system_TM4C123.c
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>
